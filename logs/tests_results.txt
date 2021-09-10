@@ -1,10 +1,25 @@
 test_average (__main__.TestExercice) ... ok
 test_square (__main__.TestExercice) ... ok
 test_square_root (__main__.TestExercice) ... ok
-test_to_celsius (__main__.TestExercice) ... ok
+test_to_celsius (__main__.TestExercice) ... FAIL
 test_to_degrees (__main__.TestExercice) ... FAIL
-test_to_farenheit (__main__.TestExercice) ... FAIL
-test_to_radians (__main__.TestExercice) ... FAIL
+test_to_farenheit (__main__.TestExercice) ... ok
+test_to_radians (__main__.TestExercice) ... ok
+
+======================================================================
+FAIL: test_to_celsius (__main__.TestExercice)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "test_exercice.py", line 95, in test_to_celsius
+    self.assertListEqual(
+AssertionError: Lists differ: [-57.6, -102.60000000000001, 754.2] != [-17.77777777777778, -31.666666666666664, 232.77777777777777]
+
+First differing element 0:
+-57.6
+-17.77777777777778
+
+- [-57.6, -102.60000000000001, 754.2]
++ [-17.77777777777778, -31.666666666666664, 232.77777777777777] : Mauvais calcul de farenheit -> celsius
 
 ======================================================================
 FAIL: test_to_degrees (__main__.TestExercice)
@@ -12,55 +27,22 @@ FAIL: test_to_degrees (__main__.TestExercice)
 Traceback (most recent call last):
   File "test_exercice.py", line 83, in test_to_degrees
     self.assertListEqual(
-AssertionError: Lists differ: [(0, 2, 5.663706143591716), (-1, 55, 48.672[62 chars]508)] != [(79.0980174562859, 5.881047377154118, 29.6[197 chars]998)]
+AssertionError: Lists differ: [(114, 35, 29.612494192724625), (-230, 49, [77 chars]998)] != [(79.0980174562859, 5.881047377154118, 29.6[197 chars]998)]
 
 First differing element 0:
-(0, 2, 5.663706143591716)
+(114, 35, 29.612494192724625)
 (79.0980174562859, 5.881047377154118, 29.612494192724625)
 
-- [(0, 2, 5.663706143591716),
--  (-1, 55, 48.67258771281641),
--  (0, 5, 14.15926535897933),
--  (0, 4, 16.98227906364508)]
+- [(114, 35, 29.612494192724625),
+-  (-230, 49, 0.7750116145507491),
+-  (286, 28, 44.031235481811564),
+-  (234, 20, 23.057550624127998)]
 + [(79.0980174562859, 5.881047377154118, 29.612494192724625),
 +  (-278.1960349125718, 48.23790524569176, 0.7750116145507491),
 +  (257.74504364071475, -15.297381557114704, 44.031235481811564),
 +  (213.95544569810457, -2.673258113725865, 23.057550624127998)] : Mauvais calcul de radians -> degres
 
-======================================================================
-FAIL: test_to_farenheit (__main__.TestExercice)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "test_exercice.py", line 107, in test_to_farenheit
-    self.assertListEqual(
-AssertionError: Lists differ: [-17.77777777777778, -31.666666666666668, 232.77777777777777] != [32.0, -13.0, 843.8000000000001]
-
-First differing element 0:
--17.77777777777778
-32.0
-
-- [-17.77777777777778, -31.666666666666668, 232.77777777777777]
-+ [32.0, -13.0, 843.8000000000001] : Mauvais calcul de celsius -> farenheit
-
-======================================================================
-FAIL: test_to_radians (__main__.TestExercice)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "test_exercice.py", line 64, in test_to_radians
-    self.assertListEqual(
-AssertionError: Lists differ: [-0.0[13 chars]503, 0.17598251810595045, 6.283490739798685, 6.997344948274799] != [-0.0[13 chars]503, 0.17598251810595048, 6.283490739798685, 6.9973449482748]
-
-First differing element 1:
-0.17598251810595045
-0.17598251810595048
-
-+ [-0.08668468618238503, 0.17598251810595048, 6.283490739798685, 6.9973449482748]
-- [-0.08668468618238503,
--  0.17598251810595045,
--  6.283490739798685,
--  6.997344948274799] : Mauvais calcul de degres -> radians
-
 ----------------------------------------------------------------------
 Ran 7 tests in 0.001s
 
-FAILED (failures=3)
+FAILED (failures=2)
