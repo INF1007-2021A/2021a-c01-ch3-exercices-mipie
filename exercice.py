@@ -19,35 +19,26 @@ def average(a: float, b: float, c: float) -> float:
 
 
 def to_radians(angle_degs: float, angle_mins: float, angle_secs: float) -> float:
-    radian= math.radians(angle_degs)
-    x = angle_mins * math.pi/(60*180)
-    y = angle_secs * math.pi/(180*3600)
-    angle_total = radian + x + y
+    angle_total = math.radians(angle_degs+(angle_mins + (angle_secs/60))/60)
     return angle_total
 
 
 def to_degrees(angle_rads: float) -> tuple:
-    degres_total = math.radians(angle_rads)
-    degres= math.floor(degres_total)
-    reste_degres = degres_total - degres
+    degrees = math.degrees(angle_rads)
+    min = (degrees - math.floor(degrees)) * 60
+    sec = (min - math.floor(min)) * 60
 
-    minutes_total = reste_degres * 60
-    minutes = math.floor(minutes_total)
-    reste_minutes = minutes_total - minutes
-
-    secondes_total = reste_minutes * 60
-
-    return degres, minutes,secondes_total
+    return math.floor(degrees), math.floor(min), sec
 
 
 def to_celsius(temperature: float) -> float:
-    celsius = (temperature - 32)/1.8
-    return celsius
+    celsius = (temperature * 1.8)+32
+    return  (temperature-32)*1.8
 
 
 def to_farenheit(temperature: float) -> float:
-    farenheit = (temperature-32)*5/9
-    return farenheit
+
+    return temperature * 1.8+32
 
 
 def main() -> None:
